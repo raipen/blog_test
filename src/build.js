@@ -1,7 +1,7 @@
-const renderToString = require('react-dom/server').renderToString;
-const React = require('react');
-const Main = require('../template/page/Main').default;
-const Post = require('../template/page/Post').default;
+import { renderToString } from 'react-dom/server';
+import React from 'react';
+import Main from '../template/page/Main';
+import Post from '../template/page/Post';
 
 console.log("asdf");
 const html = renderToString(<Main />);
