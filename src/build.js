@@ -1,8 +1,8 @@
-import { renderToString } from 'react-dom/server';
+import { renderToString,renderToStaticMarkup } from 'react-dom/server';
 import React from 'react';
 import Main from '../template/page/Main';
 import Post from '../template/page/Post';
 
 console.log("asdf");
-const html = renderToString(<Main />);
+const html = renderToStaticMarkup(<Main />);
 console.log(html);
