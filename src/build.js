@@ -11,14 +11,16 @@ const html = fs.readFileSync('./build/index.html', 'utf8');
 fs.mkdirSync("./build", { recursive: true });
 
 urls.forEach((url) => {
-    fs.writeFileSync("./build" + (url=== "/" ? "/index" : url) + ".html",
+    fs.writeFileSync("./build" + (url=== "/" ? "/index" : url),
         html.replace(
-            '<div id="app"></div>',
-            renderToString(
+            '<div id="root"></div>',
+            `<div id="root">
+            ${renderToString(
                 <StaticRouter location={url}>
                     <App />
                 </StaticRouter>
-            )
+            )}
+            </div>`
         )
     );
 });
