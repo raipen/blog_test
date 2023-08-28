@@ -3,10 +3,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: './src/build.js', // webpack 최초 진입점(엔트리 포인트) 파일 경로를 설정합니다.
+  entry: './src/entry.js', // webpack 최초 진입점(엔트리 포인트) 파일 경로를 설정합니다.
   output: { // webpack을 실행한 후의 결과물의 이름/경로 등을 설정합니다.
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -18,6 +18,8 @@ module.exports = {
     static: path.resolve(__dirname, 'dist'),
     historyApiFallback: true, // 404 페이지 대신 index.html로 이동합니다.
     hot: true, // 모듈 전체를 다시 로드하지 않고 변경된 사항만 갱신합니다.
+    port: 3000,
+    open: true,
   },
   resolve: { // resolve: import를 할 때 확장자를 생략할 수 있습니다.
     extensions: ['.jsx', '.js', '.tsx', '.ts']
@@ -30,6 +32,9 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: '/node_modules/',
         loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env', ['@babel/preset-react', { runtime: 'automatic' }]],
+        },
       },
       {
         test: /\.css$/,

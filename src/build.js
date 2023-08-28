@@ -1,8 +1,24 @@
-import { renderToString,renderToStaticMarkup } from 'react-dom/server';
 import React from 'react';
-import Main from '../template/page/Main';
-import Post from '../template/page/Post';
+import { renderToString,renderToStaticMarkup } from 'react-dom/server';
+import { StaticRouter } from "react-router-dom/server";
+import App from '../template/App';
+import fs from 'fs';
 
-console.log("asdf");
-const html = renderToStaticMarkup(<Main />);
-console.log(html);
+const urls = ["/", "/about"];
+
+const html = fs.readFileSync('./build/index.html', 'utf8');
+
+fs.mkdirSync("./build", { recursive: true });
+
+urls.forEach((url) => {
+    fs.writeFileSync("./build" + (url=== "/" ? "/index" : url) + ".html",
+        html.replace(
+            '<div id="app"></div>',
+            renderToString(
+                <StaticRouter location={url}>
+                    <App />
+                </StaticRouter>
+            )
+        )
+    );
+});
