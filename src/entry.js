@@ -4,7 +4,7 @@ import App from "../template/App";
 
 ReactDOM.hydrateRoot(
   document.getElementById("root"),
-  <BrowserRouter basename="/blog_test">
+  <BrowserRouter basename={process.env.BASE_URL}>
     <App />
   </BrowserRouter>
 );

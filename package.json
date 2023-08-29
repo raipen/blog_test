@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack server --mode development",
     "build": "webpack --mode production&&babel-node src/build.js",
-    "build:local": "BASE_URL=$PWD/build webpack --mode production&&babel-node src/build.js"
+    "build:local": "BASE_URL=file:///$PWD/build webpack --mode production&&babel-node src/build.js"
   },
   "author": "",
   "license": "ISC",
