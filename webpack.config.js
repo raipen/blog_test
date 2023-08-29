@@ -15,7 +15,7 @@ module.exports = {
       template: './template/index.html', // 번들링 파일을 주입하여 번들링 폴더로 복사할 대상 HTML 파일을 설정합니다.
     }),
     new webpack.EnvironmentPlugin({
-      baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+      BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
     }),
   ],
   devServer: { // webpack-dev-server 옵션을 설정합니다.
