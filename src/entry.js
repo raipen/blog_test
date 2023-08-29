@@ -4,7 +4,7 @@ import App from "../template/App";
 
 ReactDOM.hydrateRoot(
   document.getElementById("root"),
-  <BrowserRouter basename="https://raipen.github.io/blog_test/">
+  <BrowserRouter basename="/blog_test/">
     <App />
   </BrowserRouter>
 );
