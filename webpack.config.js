@@ -8,6 +8,7 @@ module.exports = {
   output: { // webpack을 실행한 후의 결과물의 이름/경로 등을 설정합니다.
     filename: 'main.js',
     path: path.resolve(__dirname, 'build'),
+    publicPath: '/',
   },
   plugins: [
     new CleanWebpackPlugin(),
