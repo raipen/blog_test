@@ -17,7 +17,7 @@ urls.forEach((url) => {
             '<div id="root"></div>',
             `<div id="root">
             ${renderToString(
-                <StaticRouter location={url} basename={process.env.BASE_URL}>
+                <StaticRouter location={process.env.BASE_URL+url} basename={process.env.BASE_URL}>
                     <App />
                 </StaticRouter>
             )}

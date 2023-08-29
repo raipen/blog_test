@@ -8,7 +8,7 @@ module.exports = {
   output: { // webpack을 실행한 후의 결과물의 이름/경로 등을 설정합니다.
     filename: 'main.js',
     path: path.resolve(__dirname, 'build'),
-    publicPath: process.env.BASE_URL || 'http://localhost:3000',
+    publicPath: process.env.BASE_URL || '',
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -16,7 +16,7 @@ module.exports = {
       template: './template/index.html', // 번들링 파일을 주입하여 번들링 폴더로 복사할 대상 HTML 파일을 설정합니다.
     }),
     new webpack.EnvironmentPlugin({
-      BASE_URL: process.env.BASE_URL || 'http://localhost:3000',
+      BASE_URL: process.env.BASE_URL || '',
     }),
   ],
   devServer: { // webpack-dev-server 옵션을 설정합니다.
