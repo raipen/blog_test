@@ -8,10 +8,11 @@ const urls = ["/", "/about"];
 
 const html = fs.readFileSync('./build/index.html', 'utf8');
 
-fs.mkdirSync("./build", { recursive: true });
-
 urls.forEach((url) => {
-    fs.writeFileSync("./build" + (url=== "/" ? "/index" : url) + ".html",
+    const path = "./build" + (url=== "/" ? "" : url);
+    if(!fs.existsSync(path))
+        fs.mkdirSync(path, { recursive: true });
+    fs.writeFileSync(path+"/index.html",
         html.replace(
             '<div id="root"></div>',
             `<div id="root">

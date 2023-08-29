@@ -5,7 +5,8 @@
   "main": "src/dev.js",
   "scripts": {
     "start": "webpack server --mode development",
-    "build": "webpack --mode production&&babel-node src/build.js"
+    "build": "webpack --mode production&&babel-node src/build.js",
+    "build:local": "BASE_URL=$PWD webpack --mode production&&babel-node src/build.js"
   },
   "author": "",
   "license": "ISC",
