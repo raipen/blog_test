@@ -15,13 +15,13 @@ urls.forEach((url) => {
     fs.writeFileSync(path+"/index.html",
         html.replace(
             '<div id="root"></div>',
-            `<div id="root">
-            ${renderToString(
+            `<div id="root">`+
+            renderToString(
                 <StaticRouter location={process.env.BASE_URL+url} basename={process.env.BASE_URL}>
                     <App />
                 </StaticRouter>
-            )}
-            </div>`
+            )+
+            `</div>`
         )
     );
 });
